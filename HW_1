@@ -1,0 +1,31 @@
+<?php
+
+        //1
+        $name = "Виктория";
+        $age = 22;
+        echo "Мое имя" . $name. "мой возраст" . $age. "года";
+
+        //2
+        $mark = 10;
+        echo "Оценка за прошлое занятие" . $mark. "все понравилось" ;
+
+		//3
+		define('const', '8');
+		echo const;
+
+		//4
+		$myName = "Виктория";
+		$myAge = "22";
+		echo "Всем привет, меня зовут $myName и мне $myAge года.";
+		echo 'Всем привет, меня зовут ' . $myName . ' и мне ' . $myAge . ' года.' ;
+
+		//5
+		$bool = false;        
+		$int = 8;        
+		$float = 8.7;      
+		$array = array(1, 2, 3); 
+		$null = null;       
+		$string = "Lesson 13"; 
+
+
+    ?>
