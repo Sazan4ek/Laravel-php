@@ -44,22 +44,10 @@ Route::get('/greet/{name}', function($name)
     return view('greet', ['name' => $name]);
 });
 
-Route::get('/api/users', function()
-{
-    $users = [
-        ['name' => 'Artyom', 'id' => 1],
-        ['name' => 'Alex', 'id' => 2],
-        ['name' => 'Vasya', 'id' => 3],
-        ['name' => 'Petya', 'id' => 4]
-    ];
-    return response()->json($users);
-});
-
 Route::get('/time', function()
 {
     return response()->json([
-        'time' => Carbon\Carbon::now()->timezone('Europe/Minsk')->format('H:i:m'),
-        'date' => Carbon\Carbon::now()->timezone('Europe/Minsk')->format('Y-m-d')
+        'date' => Carbon\Carbon::now()->timezone('Europe/Minsk')->format('Y-m-d H:i:s')
     ]);
 }); 
 
@@ -79,16 +67,16 @@ Route::post('/contact', function(Request $request)
     return 'Всё введено валидно!';
 })->name('contact-route');
 
-Route::get('/calculate/{operation}/{number1}/{number2}', function($operation, $a, $b)
+Route::get('/calculate/{operation}/{number1}/{number2}', function(string $operation, int $a, int $b)
 {
     switch($operation)
     {
         case 'sum':
-            return $a+$b;
+            return $a + $b;
         break;
 
         case 'subtraction':
-            return $a-$b;
+            return $a - $b;
         break;
 
         case 'division':
@@ -96,11 +84,11 @@ Route::get('/calculate/{operation}/{number1}/{number2}', function($operation, $a
             {
                 return "На ноль делить нельзя/";
             }
-            return $a/$b;
+            return $a / $b;
         break;
 
         case 'multiplication':
-            return $a*$b;
+            return $a * $b;
         break;
     }
 })->whereIn('operation', ['sum', 'subtraction', 'division', 'multiplication'])
