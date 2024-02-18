@@ -1,0 +1,5 @@
+<?php
+
+return [
+    'maintenanceMode' => 'Off'
+];
