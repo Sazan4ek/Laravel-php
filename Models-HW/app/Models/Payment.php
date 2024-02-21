@@ -14,6 +14,8 @@ class Payment extends Model
 
     protected $primaryKey = ["customerNumber", "checkNumber"];
 
+    public $incrementing = false;
+
     public $timestamps = false;
 
     protected $fillable = [

@@ -14,6 +14,8 @@ class OrderDetail extends Model
 
     protected $primaryKey = ["orderNumber", "productCode"];
 
+    public $incrementing = false;
+
     public $timestamps = false;
 
     protected $fillable = [
