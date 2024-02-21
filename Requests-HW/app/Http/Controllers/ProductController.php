@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductFilterRequest;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource in necessary order
      */
-    public function index(Request $request)
+    public function index(ProductFilterRequest $request)
     {
-        $price = $request->query('price');
-        $category = $request->query('category');
-        $vendor = $request->query('vendor');
+        $price = $request->validated('price');
+        $category = $request->validated('category');
+        $vendor = $request->validated('vendor');
 
         $need = [];
 
@@ -37,7 +37,7 @@ class ProductController extends Controller
         }
         else $products = Product::all();
 
-        dd($products);
+        return response()->json($products);
     }
 
 }

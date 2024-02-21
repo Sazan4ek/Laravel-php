@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::resource('/products', ProductController::class)->only('index');
+Route::resource('/products', ProductController::class)->only('index');
 
 Route::post('/employee/create', [EmployeeController::class, 'store']);

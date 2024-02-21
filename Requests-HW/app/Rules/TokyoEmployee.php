@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Models\Office;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 
@@ -14,9 +15,11 @@ class TokyoEmployee implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if($value !== 5)
+        $office = Office::find($value);
+
+        if(is_null($office) || $office->city !== "Tokyo")
         {
-            $fail(":attribute must be 5" );
+            $fail("Employee must work in Tokyo" );
         }
     }
 }

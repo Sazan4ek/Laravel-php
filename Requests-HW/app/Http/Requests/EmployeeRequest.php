@@ -28,7 +28,7 @@ class EmployeeRequest extends FormRequest
             'firstName' => ['required', 'string'],
             'extension' => ['required'],
             'email' => ['required', 'email'],
-            'officeCode' => ['required', new TokyoEmployee],
+            'officeCode' => ['required', "exists:offices,officeCode", new TokyoEmployee ],
             'reportsTo' => ['nullable', 'integer'],
             'jobTitle' => ['required', 'string']
         ];
