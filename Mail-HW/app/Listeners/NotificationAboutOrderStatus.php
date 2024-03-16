@@ -3,6 +3,8 @@
 namespace App\Listeners;
 
 use App\Mail\OrderStatusMail;
+use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
@@ -22,6 +24,9 @@ class NotificationAboutOrderStatus
      */
     public function handle(object $event): void
     {
-        Mail::to('customer@gmail.com')->send(new OrderStatusMail($event->status, $event->orderNumber));
+        $order = Order::find($event->orderNumber);
+        $customerFullName = $order->customer;
+        $email = trim($customerFullName->contactFirstName).$customerFullName->contactLastName.'@gmail.com';
+        Mail::to($email)->send(new OrderStatusMail($event->status, $event->orderNumber));
     }
 }
