@@ -26,8 +26,8 @@ class ShowConfigKey extends Command
     public function handle()
     {
         $key = $this->argument('key');
-        $answer = config($key, 'Ключ конфигурации не найден');
-        if($answer === 'Ключ конфигурации не найден') $this->error($answer);
-        else dd($answer);
+        $answer = config($key, null);
+        if(!$answer) $this->error('Ключ конфигурации не найден');
+        else print_r($answer);
     }
 }

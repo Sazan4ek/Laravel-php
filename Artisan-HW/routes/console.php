@@ -9,4 +9,4 @@ Schedule::call(function (){
     Artisan::call('config:cache');    
     Artisan::call('view:clear');  
     Artisan::call('route:clear');
-})->everyFiveSeconds();
+})->everySixHours();
