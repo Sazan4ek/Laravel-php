@@ -22,7 +22,7 @@ class SendCustomerPaymentsReportJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(Customer $customer = null, string $from = "0000-00-00", string $to = "100000-12-31")
+    public function __construct(Customer $customer = null, string $from = null, string $to = null)
     {
         $this->customer = $customer;
         $this->from = $from;
@@ -36,12 +36,14 @@ class SendCustomerPaymentsReportJob implements ShouldQueue
     {
         if($this->customer)
         {
-            $payments = $this->customer->payments;
-            $payments = $payments->filter(function ($item)
-            {
-                if($item['paymentDate'] >= $this->from && $item['paymentDate'] <= $this->to) return 1;
-            });
-            $payments->all();
+            $payments = $this->customer->payments()
+                ->when($this->from, function($query){
+                    $query->where('paymentDate', '>=', $this->from);
+                })
+                ->when($this->to, function($query){
+                    $query->where('paymentDate', '<=', $this->to);
+                })
+                ->get();
         }
         else
         {
