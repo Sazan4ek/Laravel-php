@@ -28,7 +28,7 @@ class DeleteOldFiles extends Command
      */
     public function handle()
     {
-        $paths = File::where('created_at', '<', Carbon::now()->subDays(30))->value('path');
+        $paths = File::where('created_at', '<', Carbon::now()->subDays(30))->pluck('path');
         Storage::delete($paths);
         File::where('created_at', '<', Carbon::now()->subDays(30))->delete();
     }
