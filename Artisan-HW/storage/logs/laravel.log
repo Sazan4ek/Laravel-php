@@ -1,0 +1,11 @@
+[2024-03-16 16:10:41] local.ERROR: Too few arguments to function Illuminate\Foundation\Console\Kernel::command(), 1 passed in C:\Program Files\OSPanel\domains\Artisan-HW\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php on line 357 and exactly 2 expected {"exception":"[object] (ArgumentCountError(code: 0): Too few arguments to function Illuminate\\Foundation\\Console\\Kernel::command(), 1 passed in C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php on line 357 and exactly 2 expected at C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php:331)
+[stacktrace]
+#0 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(357): Illuminate\\Foundation\\Console\\Kernel->command()
+#1 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\routes\\console.php(7): Illuminate\\Support\\Facades\\Facade::__callStatic()
+#2 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(499): require('...')
+#3 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(479): Illuminate\\Foundation\\Console\\Kernel->discoverCommands()
+#4 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(194): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#5 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1183): Illuminate\\Foundation\\Console\\Kernel->handle()
+#6 C:\\Program Files\\OSPanel\\domains\\Artisan-HW\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#7 {main}
+"} 
